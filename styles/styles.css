@@ -6,6 +6,29 @@
   font-family: "Merriweather-LightItalic";
   src: url("../fonts/Merriweather-LightItalic.ttf") format("truetype");
 }
+@font-face {
+  font-family: "MarckScript-regular";
+  src: url("../fonts/MarckScript-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "AnimaticSC-Bold";
+  src: url("../fonts/AmaticSC-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "AnimaticSC-Regular";
+  src: url("../fonts/AmaticSC-Regular.ttf") format("truetype");
+}
+
+/* font-family: "Roboto-Regular", sans-serif;
+font-family: "MarckScript-regular", sans-serif;
+font-family: "AnimaticSC-Bold", sans-serif;
+font-family: "AnimaticSC-Regular", sans-serif;*/
+
+:root {
+  --main-font-color: #3e474e;
+  --light-blue-color: #737f9b;
+}
 body {
   font-family: "Roboto-Regular", sans-serif;
 }
@@ -24,7 +47,7 @@ body {
 
 .logo {
   width: 150px;
-  filter: opacity(0.6) drop-shadow(0 0 0 #56636d);
+  filter: opacity(0.6) drop-shadow(0 0 0 var(--main-font-color));
   margin-left: 20px;
 }
 
@@ -40,9 +63,10 @@ body {
 
 .menu__item a {
   text-decoration: none;
-  font-size: 20px;
+  font-family: "AnimaticSC-Bold", sans-serif;
+  font-size: 25px;
   font-weight: 400;
-  color: #56636d;
+  color: var(--main-font-color);
   transition: 0.3s;
 }
 .menu__item:last-child {
@@ -53,7 +77,8 @@ body {
 }
 
 .banner {
-  background-image: url("../img/romashki.jpg");
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.25) 0 100%),
+    url("../img/romashki.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
@@ -63,23 +88,60 @@ body {
 
 .banner__title {
   padding-top: 300px;
+  font-family: "AnimaticSC-Bold", sans-serif;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 900px;
   text-align: center;
-  color: #56636d;
-  font-size: 44px;
-  line-height: 60px;
+  color: var(--main-font-color);
+  font-size: 80px;
+  line-height: 80px;
   font-weight: 400;
   letter-spacing: 0.02em;
 }
 .banner__slogan {
-  font-family: "Merriweather-LightItalic", serif;
-  margin: 30px auto 0;
+  font-family: "MarckScript-regular", serif;
+  margin: 50px auto 0;
   max-width: 800px;
   text-align: center;
-  color: #3d474e;
-  font-size: 25px;
-  font-weight: 300;
-  letter-spacing: 0.07em;
+  color: var(--light-blue-color);
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   font-style: italic;
+}
+
+.lodeinoe {
+}
+.houses {
+}
+.houses__header {
+}
+.houses__title {
+}
+.section__title {
+  padding-top: 150px;
+  margin: 0 auto;
+  max-width: 900px;
+  text-align: center;
+  color: var(--main-font-color);
+  font-size: 50px;
+  line-height: 60px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+.houses__title-desc {
+}
+.section__desc {
+  font-family: "MarckScript-regular", serif;
+  margin: 0px auto 0;
+  max-width: 800px;
+  text-align: center;
+  color: var(--light-blue-color);
+  font-size: 35px;
+  line-height: 30px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
+.houses__inner {
 }
