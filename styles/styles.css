@@ -20,14 +20,28 @@
   src: url("../fonts/AmaticSC-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Caveat-VariableFont_wght";
+  src: url("../fonts/Caveat-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "GreatVibes-Regular";
+  src: url("../fonts/GreatVibes-Regular.ttf") format("truetype");
+}
+
 /* font-family: "Roboto-Regular", sans-serif;
 font-family: "MarckScript-regular", sans-serif;
 font-family: "AnimaticSC-Bold", sans-serif;
-font-family: "AnimaticSC-Regular", sans-serif;*/
+font-family: "AnimaticSC-Regular", sans-serif;
+font-family: "GreatVibes-Regular";
+font-family: "Caveat-VariableFont_wght";*/
 
 :root {
-  --main-font-color: #3e474e;
-  --light-blue-color: #737f9b;
+  /* --main-font-color: #3e474e; */
+  --main-font-color: black;
+  --light-blue-color: #1d9296;
+  --backgr-color: #d5edf5;
 }
 body {
   font-family: "Roboto-Regular", sans-serif;
@@ -73,7 +87,7 @@ body {
   margin-right: 20px;
 }
 .menu__item a:hover {
-  color: #a3a3a3;
+  color: var(--light-blue-color);
 }
 
 .banner {
@@ -99,7 +113,7 @@ body {
   letter-spacing: 0.02em;
 }
 .banner__slogan {
-  font-family: "MarckScript-regular", serif;
+  font-family: "Caveat-VariableFont_wght", serif;
   margin: 50px auto 0;
   max-width: 800px;
   text-align: center;
@@ -107,77 +121,265 @@ body {
   font-size: 40px;
   font-weight: 400;
   letter-spacing: 0.02em;
-  font-style: italic;
+}
+.copy__container {
+  width: 100%;
+  text-align: end;
+  margin-top: -25px;
+}
+.copyright {
+  font-family: "Caveat-VariableFont_wght", serif;
+  font-size: 14px;
+  color: #808d97;
+  text-decoration: none;
 }
 
-.lodeinoe {
+section {
+  padding-bottom: 100px;
 }
-.houses {
-  padding-bottom: 200px;
-}
-.houses__header {
-}
-.houses__title {
-}
+
 .section__title {
   font-family: "AnimaticSC-Bold", sans-serif;
-  padding-top: 150px;
+  padding-top: 100px;
   margin: 0 auto;
-  max-width: 800px;
   text-align: center;
-  color: var(--main-font-color);
   font-size: 70px;
   font-weight: 400;
   letter-spacing: 0.02em;
+  color: var(--main-font-color);
 }
-.houses__title-desc {
-}
+
 .section__desc {
-  font-family: "MarckScript-regular", serif;
+  font-family: "Caveat-VariableFont_wght", serif;
   margin: 10px auto 0;
-  max-width: 1000px;
+  max-width: 600px;
   text-align: center;
   color: var(--light-blue-color);
   font-size: 40px;
   font-weight: 400;
   letter-spacing: 0.02em;
-  font-style: italic;
-}
-.houses__inner {
-  margin-top: 90px;
+  margin-bottom: 80px;
 }
 
-.house-cover__container{
-  cursor: pointer;
-  height:466px;
-  position:relative;
+.blue-theme {
+  background-color: var(--backgr-color);
 }
-.house-cover__container img{
-  width: 350px;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 5px 30px 2px rgba(34, 60, 80, 0.4);
-  -moz-box-shadow: 0px 5px 30px 2px rgba(34, 60, 80, 0.4);
-  box-shadow: 0px 5px 30px 2px rgba(34, 60, 80, 0.4);
-  transition: 0.5;
+.houses__sliders {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
 }
 
-.house-cover__container:hover{
-  img {
+.house {
+  display: flex;
+  flex-direction: row;
   -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.4);
   -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.4);
-  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.4);} 
-  .house-cover__title{
-    color:var(--light-blue-color);
-  }
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.4);
+  width: 1100px;
 }
-.house-cover__title{
-  bottom: 1px; 
+
+/* Основной контейнер слайдера */
+.slider {
+  width: 400px;
+  /* Фиксированная ширина слайдера */
+  overflow: hidden;
+  /* Обрезаем всё, что выходит за границы контейнера */
+  position: relative;
+  /* Позволяет корректно позиционировать кнопки */
+  text-align: center;
+  /* Центрируем текст внутри */
+}
+
+/* Контейнер всех слайдов */
+.slides {
+  display: flex;
+  /* Размещаем слайды в одну линию */
+  transition: transform 0.5s ease-in-out;
+  /* Плавная анимация при смене слайдов */
+}
+
+/* Каждый отдельный слайд */
+.slide {
+  width: 100%;
+  /* Слайды занимают всю ширину контейнера */
+  flex-shrink: 0;
+  /* Запрещаем уменьшение размера слайдов */
+  position: relative;
+  /* Позволяет позиционировать подписи внутри слайдов */
+}
+
+/* Стили для изображений */
+.slide img {
+  width: 100%;
+  /* Картинка растягивается на всю ширину слайда */
+  display: block;
+  /* Убираем возможные пробелы вокруг изображений */
+}
+
+/* Подпись к слайду */
+.caption {
   position: absolute;
-  color: #fff;
-  font-family: "AnimaticSC-Bold", sans-serif;
-  font-size: 60px;
-  line-height: 50px;
-  width: 300px;
-  margin:0;
+  /* Размещаем поверх изображения */
+  bottom: 10px;
+  /* Отступ от нижнего края */
+  left: 50%;
+  /* Выравниваем по центру */
+  transform: translateX(-50%);
+  /* Центрируем по горизонтали */
+  background: rgba(0, 0, 0, 0.6);
+  /* Полупрозрачный тёмный фон для читаемости */
+  color: white;
+  /* Белый текст */
+  padding: 5px 10px;
+  /* Внутренние отступы */
+  font-size: 14px;
+  /* Размер шрифта */
+  border-radius: 5px;
+  /* Закругляем углы */
+}
+
+/* Кнопки «Назад» и «Вперёд» */
+.prev,
+.next {
+  position: absolute;
+  /* Позволяет разместить поверх слайдов */
+  top: 50%;
+  /* Размещаем по центру вертикали */
+  transform: translateY(-50%);
+  /* Смещаем вверх на 50% высоты кнопки */
+  background: rgba(0, 0, 0, 0.5);
+  /* Полупрозрачный фон */
+  color: white;
+  /* Белый текст */
+  border: none;
+  /* Убираем границы */
+  padding: 10px;
+  /* Внутренние отступы */
+  cursor: pointer;
+  /* Изменяем курсор на указатель */
+  font-size: 18px;
+  /* Размер шрифта */
+  font-weight: bold;
+  /* Делаем текст жирным */
+  z-index: 2;
+  /* Размещаем кнопки выше всех элементов */
+}
+
+/* Позиционируем кнопку «Назад» слева */
+.prev {
+  left: 10px;
+}
+
+/* Позиционируем кнопку «Вперёд» справа */
+.next {
+  right: 10px;
+}
+
+.house_info {
+  width: 700px;
+  text-align: center;
+  padding: 30px;
+}
+.house__title {
+  font-family: "Caveat-VariableFont_wght", serif;
+  font-size: 36px;
+}
+.house__desc {
+}
+.cost__title {
+  font-size: 24px;
+}
+.cost__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.cost {
+  text-align: center;
   padding: 15px;
+  background-color: var(--backgr-color);
+  color: var;
+  font-size: 20px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+/* about */
+
+.adv__container {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.adv__item {
+  width: 300px;
+  text-align: center;
+}
+.adv__item i {
+  font-size: 100px;
+  color: var(--light-blue-color);
+}
+
+.adv__text {
+  font-family: "Caveat-VariableFont_wght", serif;
+  font-size: 30px;
+}
+
+/* contacts */
+footer {
+  padding-bottom: 10px;
+}
+
+.contacts__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 80px;
+}
+.contacts__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.contacts__item {
+}
+
+.contacts__item a {
+  margin: 15px;
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: var(--light-blue-color);
+  transition: 0.2s;
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.4);
+  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.4);
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.4);
+}
+.contacts__item a:hover {
+  -webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.7) inset;
+  -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.7) inset;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.7) inset;
+}
+
+.footer__copyright {
+  font-family: "Caveat-VariableFont_wght", serif;
+  font-size: 20px;
+  margin-top: 80px;
+}
+.houses__sliders {
+}
+.house {
+}
+
+.house_info {
 }
