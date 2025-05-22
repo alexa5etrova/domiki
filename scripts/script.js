@@ -1,16 +1,3 @@
-// Находим контейнер со слайдами
-const slides = document.querySelector(".slides");
-
-// Определяем количество слайдов
-const slideCount = document.querySelectorAll(".slide").length;
-
-// Находим кнопки «Назад» и «Вперёд»
-const prevButton = document.querySelector(".prev");
-const nextButton = document.querySelector(".next");
-
-// Находим сам слайдер (нужен для остановки автопрокрутки при наведении)
-const slider = document.querySelector(".slider");
-
 let currentIndex = 0; // Переменная для хранения текущего индекса слайда
 let autoPlayInterval; // Переменная для хранения интервала автопрокрутки
 
@@ -18,7 +5,13 @@ let autoPlayInterval; // Переменная для хранения интер
  * Функция для смены слайдов
  * @param {number} index — индекс слайда, на который нужно перейти
  */
-function goToSlide(index) {
+function goToSlide(index, house) {
+  // Находим контейнер со слайдами
+  const slides = document.querySelector(".slides" + house);
+
+  // Определяем количество слайдов
+  const slideCount = document.querySelectorAll(".slide" + house).length;
+
   if (index < 0) {
     index = slideCount - 1; // Если текущий слайд первый, переходим на последний
   } else if (index >= slideCount) {
@@ -30,38 +23,12 @@ function goToSlide(index) {
 }
 
 // Добавляем обработчик клика для кнопки «Назад»
-prevButton.addEventListener("click", () => {
-  goToSlide(currentIndex - 1);
+document.addEventListener("click", (e) => {
+  let house = e.target.value;
+  if (e.target.className === "prev") {
+    goToSlide(currentIndex - 1, house);
+  }
+  if (e.target.className === "next") {
+    goToSlide(currentIndex + 1, house);
+  }
 });
-
-// Добавляем обработчик клика для кнопки «Вперёд»
-nextButton.addEventListener("click", () => {
-  goToSlide(currentIndex + 1);
-});
-
-/**
- * Функция запуска автоматического перелистывания слайдов.
- * Устанавливает интервал на три секунды.
- */
-function startAutoPlay() {
-  autoPlayInterval = setInterval(() => {
-    goToSlide(currentIndex + 1);
-  }, 3000);
-}
-
-/**
- * Функция остановки автопрокрутки.
- * Останавливает заданный ранее интервал.
- */
-function stopAutoPlay() {
-  clearInterval(autoPlayInterval);
-}
-
-// Запускаем автопрокрутку при загрузке страницы
-startAutoPlay();
-
-// Останавливаем автопрокрутку, если пользователь навёл курсор на слайдер
-slider.addEventListener("mouseenter", stopAutoPlay);
-
-// Возобновляем автопрокрутку, когда пользователь убирает курсор
-slider.addEventListener("mouseleave", startAutoPlay);
